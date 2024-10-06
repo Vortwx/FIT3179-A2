@@ -1,0 +1,54 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "data": {
+    "url": "https://raw.githubusercontent.com/Vortwx/FIT3179-A2/refs/heads/main/data/Most-Visited-Place.csv"
+  },
+  "params": [
+    {
+      "name": "selectedState",
+      "value": null,
+      "bind": {
+        "input": "select",
+        "options": [
+          "All",
+          "Johor",
+          "Kedah",
+          "Kelantan",
+          "Melaka",
+          "Negeri Sembilan",
+          "Pahang",
+          "Pulau Pinang",
+          "Perak",
+          "Perlis",
+          "Selangor",
+          "Terengganu",
+          "Sabah",
+          "Sarawak",
+          "W.P. Kuala Lumpur",
+          "W.P. Labuan",
+          "W.P. Putrajaya"
+        ]
+      }
+    }
+  ],
+  "transform": [
+    {
+      "filter": "selectedState === 'All' || selectedState === null || datum.State === selectedState"
+    },
+    {
+      "aggregate": [{"op": "count", "as": "Count"}],
+      "groupby": ["State", "Type"]
+    }
+  ],
+  "mark": "bar",
+  "encoding": {
+    "y": {"field": "Type", "type": "ordinal", "axis": {"labelAngle": 0}},
+    "x": {"field": "Count", "type": "quantitative"},
+    "color": {
+      "field": "Type",
+      "type": "nominal",
+      "scale": {"scheme": "category10"}
+    }
+  },
+  "config": {}
+}
