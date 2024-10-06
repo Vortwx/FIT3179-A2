@@ -1,0 +1,32 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "data": {
+    "url": "https://raw.githubusercontent.com/Vortwx/FIT3179-A2/refs/heads/main/data/HeatMap-StateTouristFlow.csv"
+  },
+  "mark": "rect",
+  "encoding": {
+    "y": {"field": "Origin State", "type": "nominal"},
+    "x": {"field": "Destination State", "type": "ordinal"},
+    "color": {
+      "field": "Number of tourists visited",
+      "scale": {
+        "type": "threshold",
+        "domain": [10000, 100000, 500000, 1000000, 5000000],
+        "range": [
+          "#f1eef6",
+          "#d0d1e6",
+          "#a6bddb",
+          "#74a9cf",
+          "#2b8cbe",
+          "#045a8d"
+        ]
+      }
+    },
+    "tooltip": [
+      {"field": "Origin State", "type": "nominal"},
+      {"field": "Destination State", "type": "ordinal"},
+      {"field": "Number of tourists visited", "type": "quantitative"}
+    ]
+  },
+  "config": {"axis": {"grid": true, "tickBand": "extent"}}
+}
