@@ -1,0 +1,35 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Bump chart showing the total receipts for selected states over the years.",
+  "width": 600,
+  "height": 500,
+  "data": {
+    "url": "https://raw.githubusercontent.com/Vortwx/FIT3179-A2/refs/heads/main/data/Total%20Receipt%20Rank.csv"
+  },
+  "mark": {"type": "line", "point": true},
+  "encoding": {
+    "x": {"field": "Year", "type": "ordinal", "title": "Year"},
+    "y": {
+      "field": "Rank",
+      "type": "quantitative",
+      "title": "Total Receipts (Million RM)",
+      "sort": "descending",
+      "scale": {"domain": [0.5, 13.5]}
+    },
+    "color": {
+      "field": "State",
+      "type": "nominal",
+      "legend": {"title": "State"},
+      "scale": {"scheme": "category20"}
+    },
+    "tooltip": [
+      {"field": "State", "type": "nominal"},
+      {
+        "field": "Total Receipts in Million",
+        "type": "quantitative",
+        "title": "Total Receipts (in Million Ringgit)"
+      }
+    ]
+  },
+  "config": {}
+}
