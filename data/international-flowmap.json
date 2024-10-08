@@ -1,0 +1,197 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Flow map of inbound tourist flows to Malaysia.",
+  "projection": {
+    "type": "orthographic",
+    "rotate": {"expr": "[horizontalMove, verticalMove]"},
+    "scale": {"expr": "zoom_level"}
+  },
+  "params": [
+    {
+      "name": "horizontalMove",
+      "value": -101.975766,
+      "bind": {"input": "range", "min": -180, "max": 180, "step": 1}
+    },
+    {
+      "name": "verticalMove",
+      "value": -4.210484,
+      "bind": {"input": "range", "min": -90, "max": 90, "step": 1}
+    },
+    {
+      "name": "selectedYear",
+      "value": 2023,
+      "bind": {
+        "input": "range",
+        "min": 2015,
+        "max": 2023,
+        "step": 1,
+        "name": "Year"
+      }
+    },
+    {
+      "name": "zoom_level",
+      "value": 250,
+      "bind": {
+        "input": "range",
+        "min": 250,
+        "max": 2000,
+        "step": 50,
+        "name": "Zoom: "
+      }
+    }
+  ],
+  "layer": [
+    {
+      "data": {"sphere": true},
+      "mark": {"type": "geoshape", "fill": "aliceblue"}
+    },
+    {
+      "mark": {
+        "type": "geoshape",
+        "fill": "#ddd",
+        "stroke": "#fff",
+        "strokeWidth": 1
+      },
+      "data": {
+        "url": "https://raw.githubusercontent.com/Vortwx/FIT3179-A2/refs/heads/main/js/ne_110m_ocean.topojson",
+        "format": {"type": "topojson", "feature": "ne_110m_admin_0_countries"}
+      }
+    },
+    {
+      "mark": {
+        "type": "rule",
+        "strokeWidth": {
+          "expr": "clamp(datum['Total Inbound Tourists'] / 100000, 1, 10)"
+        },
+        "color": "steelblue"
+      },
+      "data": {
+        "url": "https://raw.githubusercontent.com/Vortwx/FIT3179-A2/refs/heads/main/data/International-Inbound-Flow.csv"
+      },
+      "transform": [
+        {"filter": "datum.Year == selectedYear"},
+        {
+          "filter": "(horizontalMove * -1) - 90 < datum.Long && datum.Long < (horizontalMove * -1) + 90 && (verticalMove * -1) - 90 < datum.Lat && datum.Lat < (verticalMove * -1) + 90"
+        },
+        {"calculate": "4.210484", "as": "latitude"},
+        {"calculate": "101.975766", "as": "longitude"},
+        {
+          "lookup": "Origin Country",
+          "from": {
+            "data": {
+              "url": "https://raw.githubusercontent.com/Vortwx/FIT3179-A2/refs/heads/main/data/International-Inbound-Flow.csv"
+            },
+            "key": "Origin Country",
+            "fields": ["Lat", "Long"]
+          },
+          "as": ["lat2", "lon2"]
+        }
+      ],
+      "encoding": {
+        "latitude": {"field": "latitude"},
+        "longitude": {"field": "longitude"},
+        "latitude2": {"field": "lat2"},
+        "longitude2": {"field": "lon2"},
+        "strokeWidth": {
+          "field": "Total Inbound Tourists",
+          "type": "quantitative",
+          "scale": {"domain": [1000, 1000000], "range": [1, 6]}
+        },
+        "color": {
+          "condition": {"param": "org", "value": "red"},
+          "value": "black"
+        },
+        "opacity": {"condition": {"param": "org", "value": 1}, "value": 0.1},
+        "tooltip": [
+          {
+            "field": "Origin Country",
+            "type": "nominal",
+            "title": "Origin Country"
+          },
+          {
+            "field": "Total Inbound Tourists",
+            "type": "quantitative",
+            "title": "Inbound Tourists"
+          }
+        ]
+      }
+    },
+    {
+      "mark": {
+        "type": "image",
+        "width": 20,
+        "height": 20,
+        "url": "https://cdn-icons-png.flaticon.com/512/484/484167.png"
+      },
+      "data": {"values": [{"latitude": 4.210484, "longitude": 101.975766}]},
+      "encoding": {
+        "latitude": {"field": "latitude"},
+        "longitude": {"field": "longitude"}
+      }
+    },
+    {
+      "mark": {"type": "circle"},
+      "data": {
+        "url": "https://raw.githubusercontent.com/Vortwx/FIT3179-A2/refs/heads/main/data/International-Inbound-Flow.csv"
+      },
+      "transform": [
+        {"filter": "datum.Year == selectedYear"},
+        {
+          "aggregate": [
+            {"op": "sum", "field": "Total Inbound Tourists", "as": "Total"}
+          ],
+          "groupby": ["Origin Country"]
+        },
+        {
+          "lookup": "Origin Country",
+          "from": {
+            "data": {
+              "url": "https://raw.githubusercontent.com/Vortwx/FIT3179-A2/refs/heads/main/data/International-Inbound-Flow.csv"
+            },
+            "key": "Origin Country",
+            "fields": ["Lat", "Long"]
+          }
+        },
+        {
+          "filter": "(horizontalMove * -1) - 90 < datum.Long && datum.Long < (horizontalMove * -1) + 90 && (verticalMove * -1) - 90 < datum.Lat && datum.Lat < (verticalMove * -1) + 90"
+        }
+      ],
+      "params": [
+        {
+          "name": "org",
+          "select": {
+            "type": "point",
+            "on": "pointerover",
+            "nearest": true,
+            "fields": ["Origin Country"]
+          }
+        }
+      ],
+      "encoding": {
+        "latitude": {"field": "Lat"},
+        "longitude": {"field": "Long"},
+        "size": {
+          "field": "Total",
+          "type": "quantitative",
+          "scale": {"type": "log"},
+          "legend": null
+        },
+        "tooltip": [
+          {
+            "field": "Origin Country",
+            "type": "nominal",
+            "title": "Origin Country"
+          },
+          {
+            "field": "Total",
+            "type": "quantitative",
+            "title": "Inbound Tourists"
+          }
+        ]
+      }
+    }
+  ],
+  "width": 900,
+  "height": 500,
+  "config": {}
+}
