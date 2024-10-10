@@ -1,0 +1,80 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "width": 1200,
+  "height": 600,
+  "title": {
+    "text": "Density of domestic tourists (per 1000 tourists) in each states of Malaysia",
+    "fontSize": 20
+  },
+  "projection": {"type": "mercator"},
+  "params": [
+    {
+      "name": "selectedYear",
+      "value": 2015,
+      "bind": {
+        "input": "range",
+        "min": 2015,
+        "max": 2023,
+        "step": 1,
+        "name": "Year: "
+      }
+    }
+  ],
+  "layer": [
+    {
+      "mark": {"type": "geoshape", "stroke": "black", "strokeWidth": 0.5},
+      "data": {
+        "url": "https://raw.githubusercontent.com/Vortwx/FIT3179-A2/refs/heads/main/data/Malaysia%20Domestic%20Tourism%202015-2023.csv"
+      },
+      "transform": [
+        {
+          "lookup": "States",
+          "from": {
+            "data": {
+              "url": "https://raw.githubusercontent.com/Vortwx/FIT3179-A2/refs/heads/main/js/ne_10m.topojson",
+              "format": {
+                "type": "topojson",
+                "feature": "ne_10m_admin_1_states_provinces"
+              }
+            },
+            "key": "properties.name"
+          },
+          "as":"geo"
+        },
+        {"filter": "datum.Year == selectedYear"}
+      ],
+      "encoding": {
+        "shape": {
+            "field": "geo",
+            "type": "geojson"
+          },
+        "color": {
+          "field": "total_visitor_per_1k_pop",
+          "title": "visitors per 1000 population",
+          "type": "quantitative",
+          "scale": {
+            "type": "threshold",
+            "domain": [25,50,75,100,125],
+            "range":["#ffffcc","#c7e9b4","#7fcdbb","#41b6c4","#2c7fb8","#253494"]
+          },
+          "legend": {
+            "orient": "bottom",
+            "direction": "horizontal",
+            "title": "Visitors per 1000 Population"
+          }
+        },
+        "tooltip": [
+          {"field": "States", "type": "nominal", "title": "State"},
+          {
+            "field": "total_visitor_per_1k_pop",
+            "type": "quantitative",
+            "title": "Domestic Visitors Density (per 1000 tourists)",
+            "format": ".2f"
+          },
+          {"field": "Visitors", "type": "quantitative"}
+        ]
+      }
+    }
+  ],
+  "config": {}
+}

@@ -1,7 +1,7 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "description": "Flow map of inbound tourist flows to Malaysia.",
-  "projection": {"type": "equirectangular", "scale": {"expr": "zoom_level"}},
+  "projection": {"type": "equirectangular", "center": [45.0792, 23.8859]},
   "params": [
     {
       "name": "selectedYear",
@@ -11,18 +11,7 @@
         "min": 2015,
         "max": 2023,
         "step": 1,
-        "name": "Year"
-      }
-    },
-    {
-      "name": "zoom_level",
-      "value": 250,
-      "bind": {
-        "input": "range",
-        "min": 250,
-        "max": 2000,
-        "step": 50,
-        "name": "Zoom: "
+        "name": "Year:  "
       }
     }
   ],
@@ -78,7 +67,8 @@
         "strokeWidth": {
           "field": "Total Inbound Tourists",
           "type": "quantitative",
-          "scale": {"domain": [1000, 1000000], "range": [1, 6]}
+          "scale": {"domain": [1000, 1000000], "range": [1, 6]},
+          "legend": null
         },
         "color": {
           "condition": {"param": "org", "value": "red"},
@@ -171,7 +161,7 @@
       }
     }
   ],
-  "width": 2000,
-  "height": 800,
+  "width": 1200,
+  "height": 600,
   "config": {}
 }

@@ -3,6 +3,8 @@
   "data": {
     "url": "https://raw.githubusercontent.com/Vortwx/FIT3179-A2/refs/heads/main/data/Most-Visited-Place.csv"
   },
+  "width": 500,
+  "height": 400,
   "params": [
     {
       "name": "selectedState",
@@ -42,12 +44,21 @@
   ],
   "mark": "bar",
   "encoding": {
-    "y": {"field": "Type", "type": "ordinal", "axis": {"labelAngle": 0}},
-    "x": {"field": "Count", "type": "quantitative"},
+    "y": {"field": "Type", "type": "ordinal", "axis": {"labelAngle": 0, "grid": false}},
+    "x": {
+      "field": "Count", "type": "quantitative", 
+      "scale": {"reverse":true, "type":"linear", "nice":true}, 
+      "axis": {
+        "grid":false,
+        "ticks": true,
+        "tickCount": 5
+      }
+  },
     "color": {
       "field": "Type",
       "type": "nominal",
-      "scale": {"scheme": "category10"}
+      "scale": {"scheme": "category10"},
+      "legend": null
     }
   },
   "config": {}

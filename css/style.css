@@ -1,0 +1,103 @@
+/*
+.pure-u-1-1 {
+    text-align: center;
+    padding-left: 0;
+  }
+
+  #vis2{
+    margin: 0 0;
+  }
+
+    .large-vis-container {
+    width: 100%;
+    margin: 0; 
+    padding: 0; 
+    }
+*/
+
+.page{
+  background-color: white;
+  background-color: #ffffff;
+  background-color: #ae4141;
+  background-color: #ffffff;
+  /* background-color: #fffefc; */
+  padding: 30px;
+  border-radius: 8px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.15);
+  max-width: 92%;
+  min-width: 80%;
+  width: 100%;
+  margin: 20px auto;
+  box-sizing: border-box;
+}
+
+body{
+  background-color: #f8f9fa;
+  background-color: #fbfaf7;
+  background-color: #fffefb;
+
+  /* color: #1932c8; */
+}
+
+.vega-embed {
+  border: none;
+  padding-top: 100px;
+}
+
+.vis-container {
+  display: inline-block;
+}
+
+
+.vis-container {
+  max-width: 800px;
+}
+
+/* #vis2,#vis5{
+  padding-left: 60px;
+}
+
+#vis4{
+  margin: 0 auto;
+  padding: 0 60px;
+  width:100%;
+}
+
+#vis3{
+  padding-left:340px;
+} */
+
+.pure-u-1-1{
+  text-align: center;
+}
+
+.bar{
+  text-align: right;
+}
+
+p{
+  text-align: center;
+  margin: 50px 250px;
+}
+
+h3{
+  text-align:center;
+  padding-left: 80px;
+}
+
+.centered p{
+  display: flex;
+  justify-content: center;
+  height: 100%;            /* Ensure full height of the element */
+  text-align: center;
+  margin: 100px 100px;
+  padding-left: 80px;
+}
+
+.centered h3{
+  padding-top: 180px;
+  align-items: center;
+}
+
+
+

@@ -1,8 +1,8 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "description": "Bump chart showing the total receipts for selected states over the years.",
-  "width": 600,
-  "height": 500,
+  "width": 1000,
+  "height": 400,
   "data": {
     "url": "https://raw.githubusercontent.com/Vortwx/FIT3179-A2/refs/heads/main/data/Total%20Receipt%20Rank.csv"
   },
