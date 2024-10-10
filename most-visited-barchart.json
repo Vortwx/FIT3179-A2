@@ -39,12 +39,15 @@
     },
     {
       "aggregate": [{"op": "count", "as": "Count"}],
-      "groupby": ["State", "Type"]
+      "groupby": ["Type"]
     }
   ],
   "mark": "bar",
   "encoding": {
-    "y": {"field": "Type", "type": "ordinal", "axis": {"labelAngle": 0, "grid": false}},
+    "y": {"field": "Type", "type": "ordinal", "axis": {"labelAngle": 0, "grid": false}, "sort": {
+      "field": "Count",
+      "order": "descending"
+    }},
     "x": {
       "field": "Count", "type": "quantitative", 
       "scale": {"reverse":true, "type":"linear", "nice":true}, 
@@ -55,9 +58,13 @@
       }
   },
     "color": {
-      "field": "Type",
-      "type": "nominal",
-      "scale": {"scheme": "category10"},
+      "field": "Count",
+      "type": "quantitative",
+      "scale": {
+        "type": "log",
+        "domain": [1,30],  
+        "range": ["#d4e7fa", "#023e8a"]
+      },
       "legend": null
     }
   },

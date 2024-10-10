@@ -16,14 +16,16 @@
 */
 
 .page{
-  background-color: white;
+  /* background-color: rgb(226, 218, 218);
   background-color: #ffffff;
   background-color: #ae4141;
-  background-color: #ffffff;
+  background-color: #ffffff; */
   /* background-color: #fffefc; */
+  background-color: #ffffff;
   padding: 30px;
   border-radius: 8px;
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.15);
+  
   max-width: 92%;
   min-width: 80%;
   width: 100%;
@@ -32,11 +34,26 @@
 }
 
 body{
-  background-color: #f8f9fa;
+  /* background-color: #f8f9fa;
   background-color: #fbfaf7;
-  background-color: #fffefb;
+  background-color: #fffefb; */
+  background-color: #eef2f3;
+
+  font-family: 'Montserrat', sans-serif;
+  font-size: 18px;
+  color:#5f6368;
 
   /* color: #1932c8; */
+}
+
+h1,h3{
+  font-family: 'Playfair Display', serif;
+  font-weight: 700;
+  color: #2e2e2e;
+}
+
+h1{
+  font-size: 50px;
 }
 
 .vega-embed {
@@ -51,6 +68,11 @@ body{
 
 .vis-container {
   max-width: 800px;
+}
+
+.pure-g {
+  border-bottom: 1px solid #d1d1d1; /* Light divider between sections */
+  padding-bottom: 30px;
 }
 
 /* #vis2,#vis5{
@@ -82,7 +104,9 @@ p{
 
 h3{
   text-align:center;
+  align-items: start;
   padding-left: 80px;
+  font-size: 40px;
 }
 
 .centered p{
@@ -95,8 +119,13 @@ h3{
 }
 
 .centered h3{
-  padding-top: 180px;
-  align-items: center;
+  padding-top: 150px;
+  vertical-align: text-top;
+}
+
+.small-font {
+  font-size: 14px;
+  color: #777;  /* Subtle color for footer text */
 }
 
 
