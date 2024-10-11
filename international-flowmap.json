@@ -140,11 +140,8 @@
       "encoding": {
         "latitude": {"field": "Lat"},
         "longitude": {"field": "Long"},
-        "size": {
-          "field": "Total",
-          "type": "quantitative",
-          "scale": {"type": "log"},
-          "legend": null
+        "size":{
+          "value": 100
         },
         "tooltip": [
           {

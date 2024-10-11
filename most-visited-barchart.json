@@ -29,7 +29,8 @@
           "W.P. Kuala Lumpur",
           "W.P. Labuan",
           "W.P. Putrajaya"
-        ]
+        ],
+        "name": "State: "
       }
     }
   ],
@@ -66,7 +67,19 @@
         "range": ["#d4e7fa", "#023e8a"]
       },
       "legend": null
-    }
+    },
+    "tooltip": [
+      {
+        "field": "Type",
+        "type": "nominal",
+        "title": "Type of destination"
+      },
+      {
+        "field": "Count",
+        "type": "quantitative",
+        "title": "Occurence"
+      }
+    ]
   },
   "config": {}
 }
