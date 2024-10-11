@@ -51,23 +51,16 @@
     }},
     "x": {
       "field": "Count", "type": "quantitative", 
-      "scale": {"reverse":true, "type":"linear", "nice":true}, 
+      "scale": {"type":"linear", "nice":true}, 
       "axis": {
         "grid":false,
         "ticks": true,
         "tickCount": 5
       }
   },
-    "color": {
-      "field": "Count",
-      "type": "quantitative",
-      "scale": {
-        "type": "log",
-        "domain": [1,30],  
-        "range": ["#d4e7fa", "#023e8a"]
-      },
-      "legend": null
-    },
+  "color": {
+    "value": "#6083b9"
+  },
     "tooltip": [
       {
         "field": "Type",
