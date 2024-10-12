@@ -33,10 +33,12 @@
       }
     },
     {
+      "mark": {"type": "geoshape", "fill": null, "stroke": "black"},
       "data":{
-        "url":
+        "url": "https://raw.githubusercontent.com/Vortwx/FIT3179-A2/refs/heads/main/js/ne_10m_graticules_30.json",
+        "format": {"type": "topojson", "feature": "ne_10m_graticules_30"}
       }
-    }
+    },
     {
       "mark": {
         "type": "rule",
