@@ -1,7 +1,7 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "description": "Flow map of inbound tourist flows to Malaysia.",
-  "projection": {"type": "equirectangular", "center": [45.0792, 23.8859]},
+  "projection": {"type": "naturalEarth1", "center": [45.0792, 23.8859]},
   "params": [
     {
       "name": "selectedYear",
@@ -33,10 +33,10 @@
       }
     },
     {
-      "mark": {"type": "geoshape", "fill": null, "stroke": "black"},
+      "mark": {"type": "geoshape", "fill": null, "stroke": "#ddd"},
       "data":{
-        "url": "https://raw.githubusercontent.com/Vortwx/FIT3179-A2/refs/heads/main/js/ne_10m_graticules_30.json",
-        "format": {"type": "topojson", "feature": "ne_10m_graticules_30"}
+        "url": "https://raw.githubusercontent.com/Vortwx/FIT3179-A2/refs/heads/main/js/ne_110m_graticules_30.topojson",
+        "format": {"type": "topojson", "feature": "ne_110m_graticules_30"}
       }
     },
     {
