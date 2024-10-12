@@ -6,13 +6,21 @@
   "data": {
     "url": "https://raw.githubusercontent.com/Vortwx/FIT3179-A2/refs/heads/main/data/Total%20Receipt%20Rank.csv"
   },
-  "mark": {"type": "line", "point": true},
+  "params": [{
+    "name": "stateFilter",
+    "select": {
+      "type": "point",
+      "fields": ["State"]
+    },
+    "bind":"legend",
+    "value":"Johor"
+  }],
+  "mark": {"type": "line", "point": {"size":500}, "strokeWidth": 3},
   "encoding": {
     "x": {"field": "Year", "type": "ordinal", "title": "Year"},
     "y": {
       "field": "Rank",
       "type": "quantitative",
-      "title": "Total Receipts (Million RM)",
       "sort": "descending",
       "scale": {"domain": [0.5, 13.5]}
     },
@@ -20,7 +28,30 @@
       "field": "State",
       "type": "nominal",
       "legend": {"title": "State"},
-      "scale": {"scheme": "category20"}
+      "scale": {
+        "range": [
+          "#000000",
+          "#8C564B",
+          "#696969",
+          "#FFA500",
+          "#87CEEB",
+          "#FFFF00",
+          "#800080",
+          "#A52A2A",
+          "#FF69B4",
+          "#40E0D0",
+          "#00008B",
+          "#32CD32",
+          "#FF00FF"
+        ]             
+      }  
+    },
+    "opacity": {
+      "condition": {
+        "param": "stateFilter",
+        "value":1
+      },
+      "value":0.1
     },
     "tooltip": [
       {"field": "State", "type": "nominal"},
@@ -28,6 +59,11 @@
         "field": "Total Receipts in Million",
         "type": "quantitative",
         "title": "Total Receipts (in Million Ringgit)"
+      },
+      {
+        "field": "Rank",
+        "type": "ordinal",
+        "title": "Rank: "
       }
     ]
   },

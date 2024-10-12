@@ -51,11 +51,10 @@
     }},
     "x": {
       "field": "Count", "type": "quantitative", 
-      "scale": {"type":"linear", "nice":true}, 
+      "scale": {"type":"linear", "nice": true}, 
       "axis": {
-        "grid":false,
-        "ticks": true,
-        "tickCount": 5
+        "ticks": false,
+        "labelOverlap": "parity"
       }
   },
   "color": {

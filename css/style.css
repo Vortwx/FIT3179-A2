@@ -115,7 +115,7 @@ h3{
   height: 100%;            /* Ensure full height of the element */
   text-align: center;
   margin: 100px 100px;
-  padding-left: 80px;
+  padding-left: 14%;
 }
 
 .centered h3{
@@ -128,5 +128,13 @@ h3{
   color: #777;  /* Subtle color for footer text */
 }
 
+.textContainer {
+  display: inline-flex;
+  text-align: center;
+}
+
+#centered-title{
+  padding-left:0%;
+}
 
 

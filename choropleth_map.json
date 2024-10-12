@@ -2,10 +2,6 @@
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "width": 1200,
   "height": 560,
-  "title": {
-    "text": "Density of domestic tourists (per 1000 tourists) in each states of Malaysia",
-    "fontSize": 20
-  },
   "projection": {"type": "mercator"},
   "params": [
     {

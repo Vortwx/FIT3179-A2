@@ -33,6 +33,11 @@
       }
     },
     {
+      "data":{
+        "url":
+      }
+    }
+    {
       "mark": {
         "type": "rule",
         "strokeWidth": {
@@ -138,6 +143,7 @@
         }
       ],
       "encoding": {
+        "color":{"value":"#1f77b4"},
         "latitude": {"field": "Lat"},
         "longitude": {"field": "Long"},
         "size":{
