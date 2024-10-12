@@ -8,7 +8,7 @@
   "params": [
     {
       "name": "selectedState",
-      "value": "All",
+      "value": null,
       "bind": {
         "input": "select",
         "options": [
@@ -36,7 +36,7 @@
   ],
   "transform": [
     {
-      "filter": "selectedState === 'All' || datum.State === selectedState"
+      "filter": "selectedState === 'All' || selectedState === null || datum.State === selectedState"
     },
     {
       "aggregate": [{"op": "count", "as": "Count"}],
@@ -51,7 +51,10 @@
           "field": "Type",
           "type": "ordinal",
           "axis": {"labelAngle": 0, "grid": false},
-          "sort": "-x"
+          "sort": {
+            "field": "Count",
+            "order": "descending"
+          }
         },
         "x": {
           "field": "Count",
@@ -59,7 +62,8 @@
           "scale": {"type": "linear", "nice": true},
           "axis": {
             "ticks": false,
-            "grid": false
+            "grid": false,
+            "labelOverlap": "parity"
           }
         },
         "color": {
@@ -77,66 +81,6 @@
             "title": "Occurrence"
           }
         ]
-      }
-    },
-    {
-      "mark": {
-        "type": "text",
-        "align": "left",
-        "baseline": "middle",
-        "dx": 3,
-        "dy": 0,
-        "color": "black"
-      },
-      "encoding": {
-        "x": {"field": "Count", "type": "quantitative"},
-        "y": {"field": "Type", "type": "ordinal", "sort": "-x"},
-        "text": {"value": "The only resort that Malaysians love to visit is Genting Highlands"},
-        "opacity": {
-          "condition": {
-            "test": "selectedState === 'All' && (datum.Type == 'Resort')",
-            "value": 1
-          },
-          "value": 0
-        }
-      }
-    },
-    {
-      "mark": {
-        "type": "text",
-        "align": "left",
-        "baseline": "middle",
-        "dx": -300,
-        "dy": 100,
-        "color": "black",
-        "fontStyle": "italic"
-      },
-      "encoding": {
-        "x": {"field": "Count", "type": "quantitative"},
-        "y": {"field": "Type", "type": "ordinal", "sort": "-x"},
-        "text": {"value": "All 5 most visited places in Kuala Lumpur is Shopping Mall"},
-        "opacity": {
-          "condition": {
-            "test": "selectedState === 'All' && (datum.Type == 'Shopping Mall')",
-            "value": 1
-          },
-          "value": 0
-        }
-      }
-    },
-    {
-      "mark": "rule",
-      "transform": [
-        {
-          "filter": "(datum.Type === 'Shopping Mall' && selectedState === 'All')"
-        }
-      ],
-      "encoding": {
-        "x": {"value": 350},
-        "y": {"value":100},
-        "x2": {"value": 400}, 
-        "y2": {"value": 42}, 
-        "color": {"value": "black"}
       }
     }
   ],
