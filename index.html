@@ -32,7 +32,7 @@
     <div class="pure-g">
       <div class="pure-u-1-1">
         <h1>Malaysia's Tourism Overview</h1>
-        <p>
+        <p class="center">
           Malaysia's tourism industry is a vital part of its economy, attracting millions of international and domestic visitors annually. This data visualization provides an overview of international inbound tourism to Malaysia, revealing how many people from different countries visit the nation. It also highlights state-level visitor distribution, showing how tourists are spread across Malaysia’s diverse regions. Additionally, the interstate tourism flow offers insights into how domestic tourists travel between states. The visualization further explores the most visited destination types in each state, and the total tourism receipts, illustrating the economic impact of the industry across the country.
         </p>
       </div>
@@ -41,13 +41,19 @@
 
     <div class="pure-g">
         <div class="pure-u-1-1">
+          <h3 id="centered-title">International Inbound Tourism Flow Map</h3>
+          <p class="center">
+            Malaysia welcomes tourist all over the world, with the most being <span class="highlight">Singaporeans</span> at most of the time.
+            However in Year 2021, tourists from Thailand are <span class="highlight">256.51%</span> more than those from Singapore.
+            
+          </p>
           <div id="vis2" class="large-vis-container"></div>
         </div>
     </div>
 
     <div class="pure-g">
       <div id="choropleth" class="pure-u-1-1">
-        <h3 id="centered-title">Density of domestic tourists (per 1000 tourists) in each states</h3>
+        <h3 id="centered-title">Density of domestic tourists (per 1000 population) in each states</h3>
         <div id="vis5" class="large-vis-container"></div>
       </div>
     </div>
@@ -64,28 +70,23 @@
       
       <div class="pure-u-1-2 centered">
         <h3>Where Malaysians Go When They're Tired of Home?</h3>
-        <div>
-          <p class="side">
-          We can see that in general people likes to travel intrastate. With the exception of Labuan and Kuala Lumpur which they favor
-          Sabah and Selangor more than their home state (or federal territories).
-          As a highly populated state, people from Selangor enjoys travelling interstate with Pahang being the most visited state other than Selangor itself.
+        <p>
+          We can see that in general people likes to travel within the state.There are some exceptions such as: <span class="perlis-mention">Perlis</span> which they favors <span class="kedah-mention">Kedah</span> more.
+          This is due to the rather small size of their hometown which make travel in other state a more feasible choice.
         </p>
-        </div>
       </div>
     </div>
 
     <div class="pure-g">
       <div class="pure-u-1-2 centered">
         <h3>Tourist Hotspot in 2023</h3>
-
-        <div class="textContainer">
-          <p>
-            We all know that Malaysian likes shopping, and by a lot.
-            Collecting the top 5 most-visited destinations from each state, we discover that 
-            Shopping Mall
-            is the most seek after destination.
-          </p>
-        </div>
+          <div class="text-container">
+            <p>
+              We all know that Malaysian likes shopping, and by a lot. Collecting the top 5 most-visited destinations from each state, we discover that 
+              <span class="intext-mention">Shopping Mall</span>
+              is the most seek after destination.
+            </p>
+          </div>
       </div>
       <div id="bar" class="pure-u-1-2">
         <div id="vis3" class="vis-container"></div>
@@ -105,6 +106,9 @@
       <div class="pure-u-1-1 small-font">
         <p>This visualisation is created by <a href="https://github.com/Vortwx/FIT3179-A2.git" target="_blank">
             Goh Yi Harn</a>.
+        </p>
+        <p>
+          Date: 12/10/2024
         </p>
         <p>
           Lists of Datasource:

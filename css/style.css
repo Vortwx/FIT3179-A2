@@ -1,26 +1,4 @@
-/*
-.pure-u-1-1 {
-    text-align: center;
-    padding-left: 0;
-  }
-
-  #vis2{
-    margin: 0 0;
-  }
-
-    .large-vis-container {
-    width: 100%;
-    margin: 0; 
-    padding: 0; 
-    }
-*/
-
 .page{
-  /* background-color: rgb(226, 218, 218);
-  background-color: #ffffff;
-  background-color: #ae4141;
-  background-color: #ffffff; */
-  /* background-color: #fffefc; */
   background-color: #ffffff;
   padding: 30px;
   border-radius: 8px;
@@ -34,9 +12,6 @@
 }
 
 body{
-  /* background-color: #f8f9fa;
-  background-color: #fbfaf7;
-  background-color: #fffefb; */
   background-color: #eef2f3;
 
   font-family: 'Montserrat', sans-serif;
@@ -57,38 +32,18 @@ h1{
 }
 
 .vega-embed {
-  border: none;
-  padding-top: 100px;
-}
-
-.vis-container {
-  display: inline-block;
+  padding-top: 2%;
 }
 
 
 .vis-container {
-  max-width: 800px;
+  max-width: 100%;
 }
 
 .pure-g {
   border-bottom: 1px solid #d1d1d1; /* Light divider between sections */
-  padding-bottom: 30px;
+  padding-bottom: 3%;
 }
-
-/* #vis2,#vis5{
-  padding-left: 60px;
-}
-
-#vis4{
-  margin: 0 auto;
-  padding: 0 60px;
-  width:100%;
-}
-
-#vis3{
-  padding-left:340px;
-} */
-
 .pure-u-1-1{
   text-align: center;
 }
@@ -99,7 +54,7 @@ h1{
 
 p{
   text-align: center;
-  margin: 50px 250px;
+  margin: 50px 200px;
 }
 
 h3{
@@ -110,10 +65,10 @@ h3{
 }
 
 .centered p{
-  display: flex;
+  display: block;
   justify-content: center;
   height: 100%;            /* Ensure full height of the element */
-  text-align: center;
+  text-align: justify;
   margin: 100px 100px;
   padding-left: 14%;
 }
@@ -129,12 +84,45 @@ h3{
 }
 
 .textContainer {
-  display: inline-flex;
+  display: inline-block;
   text-align: center;
+  white-space: nowrap;
+  vertical-align:top;
 }
 
 #centered-title{
   padding-left:0%;
+  padding-top:2%;
 }
+
+.side{
+  margin: 0 auto;
+  height:5%;
+}
+
+.highlight{
+  color: red;
+  font-weight: bold;
+}
+
+.intext-mention{
+  color: #5f84b7;
+  font-weight: bolder;
+}
+
+.perlis-mention{
+  font-weight: bold;
+  color: #6bafd6;
+}
+
+.kedah-mention{
+  font-weight:bold;
+  color:#3282bd;
+}
+
+.center{
+  text-align: justify;
+}
+
 
 

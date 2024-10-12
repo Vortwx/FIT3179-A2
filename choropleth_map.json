@@ -18,6 +18,13 @@
   ],
   "layer": [
     {
+      "mark": {"type": "geoshape", "stroke": "black", "strokeWidth": 0.5, "fill": "lightgray"},
+      "data": {
+        "url": "https://raw.githubusercontent.com/Vortwx/FIT3179-A2/refs/heads/main/js/ne_10m_neighbouring_countries.json",
+        "format": {"type": "topojson", "feature": "ne_10m_admin_0_countries"}
+      }
+    },
+    {
       "mark": {"type": "geoshape", "stroke": "black", "strokeWidth": 0.5},
       "data": {
         "url": "https://raw.githubusercontent.com/Vortwx/FIT3179-A2/refs/heads/main/data/Malaysia%20Domestic%20Tourism%202015-2023.csv"
@@ -35,23 +42,20 @@
             },
             "key": "properties.name"
           },
-          "as":"geo"
+          "as": "geo"
         },
         {"filter": "datum.Year == selectedYear"}
       ],
       "encoding": {
-        "shape": {
-            "field": "geo",
-            "type": "geojson"
-          },
+        "shape": {"field": "geo", "type": "geojson"},
         "color": {
           "field": "total_visitor_per_1k_pop",
           "title": "visitors per 1000 population",
           "type": "quantitative",
           "scale": {
             "type": "threshold",
-            "domain": [25,50,75,100,125],
-            "range": ["#f7fcf0", "#ccebc5", "#a8ddb5", "#7bccc4", "#43a2ca", "#0868ac"]
+            "domain": [25, 50, 75, 100, 125],
+            "range": ["#ffffcc", "#d9f0a3", "#addd8e", "#78c679", "#31a354", "#006837"]
           },
           "legend": {
             "orient": "bottom",
@@ -64,12 +68,32 @@
           {
             "field": "total_visitor_per_1k_pop",
             "type": "quantitative",
-            "title": "Domestic Visitors Density (per 1000 tourists)",
+            "title": "Domestic Visitors Density (per 1000 population)",
             "format": ".2f"
           },
           {"field": "Visitors", "type": "quantitative"}
         ]
       }
+    },
+    {
+      "mark": {"type": "text", "align": "center", "baseline": "middle", "fontSize": 10, "dy": -10},
+      "encoding": {
+        "longitude": {
+          "field": "longitude",
+          "type": "quantitative",
+          "aggregate": "mean"
+        },
+        "latitude": {
+          "field": "latitude",
+          "type": "quantitative",
+          "aggregate": "mean"
+        },
+        "text": {"field": "States", "type": "nominal"}
+      },
+      "transform": [
+        {"calculate": "datum.geo.geometry.coordinates[0]", "as": "longitude"},
+        {"calculate": "datum.geo.geometry.coordinates[1]", "as": "latitude"}
+      ]
     }
   ],
   "config": {}
