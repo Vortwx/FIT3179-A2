@@ -3,8 +3,8 @@
   "data": {
     "url": "https://raw.githubusercontent.com/Vortwx/FIT3179-A2/refs/heads/main/data/HeatMap-StateTouristFlow.csv"
   },
-  "width": 500,
-  "height": 500,
+  "width": 650,
+  "height": 510,
   "mark": "rect",
   "encoding": {
     "y": {"field": "Origin State", "type": "nominal"},
@@ -29,6 +29,10 @@
       {"field": "Destination State", "type": "ordinal"},
       {"field": "Number of tourists visited", "type": "quantitative"}
     ]
+  },
+  "autosize": {
+    "type": "fit",
+    "contains": "padding"
   },
   "config": {"axis": {"grid": true, "tickBand": "extent"}}
 }
